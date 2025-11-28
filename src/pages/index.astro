@@ -1,16 +1,83 @@
 ---
+import '../styles/global.css';
+import logoAfkadi from '../assets/afkadi_logo.png';
 
+const profile = {
+  name: "Felipe Urbina", 
+  role: "Director de Desarrollo",
+  email: "felipe.urbina@afkadi.cl",
+  phone: "+56 9 5012 6087",
+  website: "https://www.afkadi.cl",
+  instagram: "https://instagram.com/afkadi.cl"
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afkadi | Tarjeta Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body class="h-[100svh] w-screen overflow-hidden relative flex flex-col items-center justify-center p-4 bg-gradient-to-br from-[var(--color-afkadi-blue-dark)] via-[var(--color-afkadi-blue-mid)] to-[var(--color-afkadi-green)]">
+
+    <div class="fixed -top-20 -right-20 w-[500px] h-[500px] pointer-events-none opacity-20 z-0">
+        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+            <path d="M350 0 L450 0 L500 86 L450 172 L350 172 L300 86 Z" fill="#FFFFFF" />
+            <path d="M250 100 L350 100 L400 186 L350 272 L250 272 L200 186 Z" fill="#FFFFFF" opacity="0.6" />
+        </svg>
+    </div>
+
+    <div class="fixed -bottom-20 -left-20 w-[500px] h-[500px] pointer-events-none opacity-20 z-0">
+        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 300 L100 300 L150 386 L100 472 L0 472 L-50 386 Z" fill="#FFFFFF" />
+            <path d="M100 200 L200 200 L250 286 L200 372 L100 372 L50 286 Z" fill="#FFFFFF" opacity="0.6"/>
+        </svg>
+    </div>
+
+<div class="relative w-full max-w-sm mx-auto group">
+        
+        <div class="absolute -inset-[3px] rounded-3xl overflow-hidden z-0">
+            <div class="absolute inset-[-50%] bg-[conic-gradient(from_0deg,transparent_0_180deg,var(--color-afkadi-blue-dark)_270deg,var(--color-afkadi-green)_360deg)] animate-[spin-slow_3s_linear_infinite] blur-md opacity-80"></div>
+        </div>
+
+        <main class="relative z-10 w-full h-full bg-white/70 backdrop-blur-x1 shadow-2xl rounded-3xl overflow-hidden p-8 border border-white/50">
+            
+            <div class="flex justify-center mb-6">
+                <div class="w-32 h-auto">
+                    <img src={logoAfkadi.src} alt="Logo Afkadi" class="w-full h-full object-contain drop-shadow-sm" onerror="this.style.display='none'; document.getElementById('logo-placeholder').style.display='flex';"/>
+                    <div id="logo-placeholder" class="hidden w-32 h-32 bg-gray-100/50 rounded-2xl items-center justify-center border-2 border-dashed border-gray-400 text-gray-500 text-xs text-center p-2">Inserta logo</div>
+                </div>
+            </div>
+
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-afkadi-blue-dark tracking-tight">{profile.name}</h2>
+                <p class="text-afkadi-blue-mid font-bold text-lg mt-1 tracking-wide uppercase text-sm">{profile.role}</p>
+                <div class="w-75 h-1.5 bg-gradient-to-r from-afkadi-blue-dark to-afkadi-green mx-auto my-4 rounded-full opacity-100"></div>
+            </div>
+
+            <div class="space-y-4">
+                 
+                 <a href={`mailto:${profile.email}`} class="block w-full py-3.5 px-4 rounded-xl text-afkadi-blue-dark font-bold bg-white/50 hover:bg-white/80 border border-afkadi-blue-dark/10 transition duration-300 flex items-center justify-center gap-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    {profile.email}
+                </a>
+
+                <a href={`https://wa.me/${profile.phone.replace('+','')}`} class="flex items-center justify-center w-full p-4 bg-[var(--color-afkadi-green)] text-white font-bold rounded-xl shadow-lg shadow-green-400/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    Contactar por WhatsApp
+                </a>
+
+                <a href={profile.instagram} target="_blank" class="group flex items-center justify-center w-full p-4 bg-[#C13584] text-white font-bold rounded-xl shadow-lg shadow-purple-500/20 hover:shadow-xl hover:bg-[#722f9e] hover:-translate-y-0.5 transition-all duration-300">
+                    <svg class="w-6 h-6 mr-3 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0z"/><path d="M12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8z"/><path d="M20.283 4.97a1.267 1.267 0 11-2.533 0 1.267 1.267 0 012.533 0z"/></svg>
+                    Siguenos en Instagram
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
 </html>

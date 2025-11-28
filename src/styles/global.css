@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+    /* Paleta Oficial Afkadi */
+    --color-afkadi-blue-dark: #049DD9;
+    --color-afkadi-blue-mid: #05C7F2;
+    --color-afkadi-blue-light: #52D5F2;
+    --color-afkadi-green: #05F2AF;
+
+    --font-body: "Montserrat", sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    @apply bg-white text-gray-800 antialiased;
+}
+
+@keyframes spin-slow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.mask-border {
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
